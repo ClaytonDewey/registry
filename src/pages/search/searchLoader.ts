@@ -10,7 +10,6 @@ export async function searchLoader({
 }: {
   request: Request;
 }): Promise<SearchLoaderResults> {
-  // https://registry.npmjs.org/<package name>
   const { searchParams } = new URL(request.url);
   const term = searchParams.get('term');
 
