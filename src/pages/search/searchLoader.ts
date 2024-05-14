@@ -1,6 +1,15 @@
+import type { PackageSummary } from '../../api/types/packageSummary';
 import { searchPackages } from '../../api/queries/searchPackages';
 
-export async function searchLoader({ request }: { request: Request }) {
+export interface SearchLoaderResults {
+  searchResults: PackageSummary[];
+}
+
+export async function searchLoader({
+  request,
+}: {
+  request: Request;
+}): Promise<SearchLoaderResults> {
   // https://registry.npmjs.org/<package name>
   const { searchParams } = new URL(request.url);
   const term = searchParams.get('term');
